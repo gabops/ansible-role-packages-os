@@ -1,0 +1,39 @@
+---
+galaxy_info:
+  role_name: gabops.packages
+  author: Gabriel Suarez
+  description: Installs packages in different Linux family distributions
+  license: MIT
+  min_ansible_version: 2.4
+  platforms:
+    - name: EL
+      versions:
+        - 6
+        - 7
+    - name: Amazon
+      versions:
+        - 2016.09
+        - 2017.03
+        - 2017.09
+        - 2017.12
+    - name: Debian
+      versions:
+        - jessie
+        - stretch
+    - name: Ubuntu
+      versions:
+        - xenial
+        - bionic
+  galaxy_tags:
+    - dnf
+    - packaging
+    - yum
+    - apt
+    - zypper
+    - centos
+    - ubuntu
+    - debian
+    - rhel
+    - amazon
+
+dependencies: []

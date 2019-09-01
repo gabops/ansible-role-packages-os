@@ -1,0 +1,26 @@
+---
+language: python
+services: docker
+
+env:
+  matrix:
+    - TEST_DISTRO: centos:6
+    - TEST_DISTRO: centos:7
+    - TEST_DISTRO: amazonlinux:2016.09
+    - TEST_DISTRO: amazonlinux:2017.03
+    - TEST_DISTRO: amazonlinux:2017.09
+    - TEST_DISTRO: amazonlinux:2017.12
+    - TEST_DISTRO: amazonlinux:2018.03
+    - TEST_DISTRO: debian:8
+    - TEST_DISTRO: debian:9
+    - TEST_DISTRO: ubuntu:16.04
+    - TEST_DISTRO: ubuntu:18.04
+
+install:
+  - pip install molecule==2.22rc1 docker flake8
+
+script:
+  - molecule test
+
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/

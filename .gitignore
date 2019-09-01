@@ -1,0 +1,6 @@
+*.retry
+*.pyc
+__pycache__
+.venv
+*.log
+.vscode

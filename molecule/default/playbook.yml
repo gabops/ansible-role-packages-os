@@ -1,0 +1,16 @@
+---
+- name: Converge
+  hosts: all
+  vars:
+    packages:
+      All:
+        nmap: present
+        nc: present
+      Centos_6:
+        tmux: present
+      Centos_7:
+        vim: present
+      Amazon_1:
+        tcpdump: present
+  roles:
+    - role: "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') | basename }}"
