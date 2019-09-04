@@ -1,12 +1,16 @@
 {% if packages_common["all"] is defined and packages_common["all"] | length %}
-{% for package in packages_common["all"] %}
-{{ package }}
+{% for package_name, status in packages_common["all"].items() %}
+{% if status == "present" %}
+{{ package_name }}
+{% endif %}
 {% endfor %}
 {% endif %}
 
 {% set distro = ansible_distribution + "_" + ansible_distribution_major_version %}
 {% if packages_common[distro | lower] is defined and packages_common[distro | lower] | length %}
-{% for package in packages_common[distro | lower] %}
-{{ package }}
+{% for package_name, status in packages_common[distro | lower].items() %}
+{% if status == "present" %}
+{{ package_name }}
+{% endif %}
 {% endfor %}
 {% endif %}
