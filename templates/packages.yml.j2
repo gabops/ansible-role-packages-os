@@ -4,20 +4,20 @@
     {% if group[0] | lower == "all" %}
         {% for name, status in group[1].items() %}
             {%- if status == "present" -%}
-                {{ name }}
+                {{ name }}: present
             {% endif %}
             {%- if status == "absent" -%}
-                {{ name }}
+                {{ name }}: absent
             {% endif %}
         {% endfor %}
     {% endif %}
     {% if group[0] | lower == distro | lower %}
         {% for name, status in group[1].items() %}
             {%- if status == "present" -%}
-                {{ name }}
+                {{ name }}: present
             {% endif %}
             {%- if status == "absent" -%}
-                {{ name }}
+                {{ name }}: absent
             {% endif %}
         {% endfor %}
     {% endif %}
