@@ -1,6 +1,14 @@
 ---
-- name: Install packages
+- name: Install/uninstall packages (RedHat)
   yum:
-    name: "{{ item }}"
-    state: present
-  loop: "{{ lookup('template', 'packages.txt.j2').split() }}"
+    name: "{{ item.key }}"
+    state: "{{ item.value }}"
+  loop: "{{ lookup('template', 'packages.yml.j2') | from_yaml | dict2items }}"
+  when: ansible_os_family == "RedHat"
+
+- name: Install/uninstall packages (Debian)
+  apt:
+    name: "{{ item.key }}"
+    state: "{{ item.value }}"
+  loop: "{{ lookup('template', 'packages.yml.j2') | from_yaml | dict2items }}"
+  when: ansible_os_family == "Debian"
