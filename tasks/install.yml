@@ -1,12 +1,6 @@
 ---
-- name: Generate list of packages
-  template:
-    src: packages.txt.j2
-    dest: /tmp/packages.txt
-
-# - block:
-#     - name: Install packages (RedHat)
-#       yum:
-#         name: "{{ item.key }}"
-#         state: "{{ item.value }}"
-#       loop:
+- name: Install packages
+  yum:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ lookup('template', 'packages.txt.j2').split() }}"
