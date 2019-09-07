@@ -3,8 +3,8 @@
   yum:
     name: "{{ item.key }}"
     state: "{{ item.value }}"
-    enablerepo: "{{ packages_yum_enablerepo }}"
-    disablerepo: "{{ packages_yum_disablerepo }}"
+    enablerepo: "{{ packages_os_yum_enablerepo }}"
+    disablerepo: "{{ packages_os_yum_disablerepo }}"
   loop: "{{ lookup('template', 'packages.yml.j2') | from_yaml | dict2items }}"
   when: ansible_os_family == "RedHat"
 
@@ -12,7 +12,7 @@
   apt:
     name: "{{ item.key }}"
     state: "{{ item.value }}"
-    update_cache: "{{ packages_apt_update_cache }}"
-    default_release: "{{ packages_apt_default_release }}"
+    update_cache: "{{ packages_os_apt_update_cache }}"
+    default_release: "{{ packages_os_apt_default_release }}"
   loop: "{{ lookup('template', 'packages.yml.j2') | from_yaml | dict2items }}"
   when: ansible_os_family == "Debian"
