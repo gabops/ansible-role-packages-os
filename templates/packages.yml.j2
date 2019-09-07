@@ -1,0 +1,37 @@
+#jinja2: lstrip_blocks: "True"
+{% if ansible_distribution == "Ubuntu" %}
+    {% set distro = ansible_distribution + "_" + ansible_distribution_version %}
+{% elif ansible_distribution == "Amazon" and ansible_distribution_version == "NA" %}
+    {% set distro = ansible_distribution + "_" + "1" %}
+{% else %}
+    {% set distro = ansible_distribution + "_" + ansible_distribution_major_version %}
+{% endif %}
+{% for group in packages_os_common.items() %}
+    {% if group[0] | lower == "all" %}
+        {% for name, status in group[1].items() %}
+{{ name }}: {{ status }}
+        {% endfor %}
+    {% endif %}
+    {% if group[0] | lower == distro | lower %}
+        {% for name, status in group[1].items() %}
+{{ name }}: {{ status }}
+        {% endfor %}
+    {% endif %}
+{% endfor %}
+
+{% for group in packages_os_group.items() %}
+    {% if group[0] | lower == "all" %}
+        {% for name, status in group[1].items() %}
+{{ name }}: {{ status }}
+        {% endfor %}
+    {% endif %}
+    {% if group[0] | lower == distro | lower %}
+        {% for name, status in group[1].items() %}
+{{ name }}: {{ status }}
+        {% endfor %}
+    {% endif %}
+{% endfor %}
+
+{% for name, status in packages_os_host.items() %}
+{{ name }}: {{ status }}
+{% endfor %}

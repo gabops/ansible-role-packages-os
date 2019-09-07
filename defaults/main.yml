@@ -1,3 +1,8 @@
 ---
-packages: {}
-
+packages_os_common: {}
+packages_os_group: {}
+packages_os_host: {}
+packages_os_yum_enablerepo: ""
+packages_os_yum_disablerepo: ""
+packages_os_apt_default_release: ""
+packages_os_apt_update_cache: true

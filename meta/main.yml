@@ -1,8 +1,8 @@
 ---
 galaxy_info:
-  role_name: gabops.packages
+  role_name: gabops.packages_os
   author: Gabriel Suarez
-  description: Installs packages in different Linux family distributions
+  description: Installs system packages on multiple GNU/Linux distributions
   license: MIT
   min_ansible_version: 2.4
   platforms:
@@ -20,6 +20,7 @@ galaxy_info:
       versions:
         - jessie
         - stretch
+        - buster
     - name: Ubuntu
       versions:
         - xenial
