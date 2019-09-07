@@ -1,6 +1,6 @@
 gabops.packages_os
 =========
-[![Build Status](https://travis-ci.org/gabops/ansible-role-gabops.packages.svg?branch=master)](https://travis-ci.org/gabops/ansible-role-packages-os)
+[![Build Status](https://travis-ci.org/gabops/ansible-role-packages-os.svg?branch=master)](https://travis-ci.org/gabops/ansible-role-packages-os)
 
 Installs system packages on multiple GNU/Linux distributions
 
