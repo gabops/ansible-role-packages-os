@@ -30,30 +30,41 @@ None.
 Example Playbook
 ----------------
 
+- group_vars/all/packages.yml:
+```yaml
+packages_os_common:
+  all:
+    tcpdump: present
+  centos_6:
+    iptables: present
+    curl: present
+  centos_7:
+    httpd: present
+    zip: present
+    tcpdump: absent
+  amazon_1:
+    telnet: present
+  amazon_2:
+    zsh: present
+  ubuntu_18.04:
+    apt-file: present
+```
+- group_vars/group_foo/packages.yml:
+
+```yaml
+packages_os_group:
+  centos_7:
+    traceroute: present
+```
+- host_vars/host_bar/packages.yml:
+```yaml
+packages_os_host:
+  vim: present
+```
+- playbook:
 ```yaml
     - hosts: all
       vars:
-        packages_os_common:
-          all:
-            tcpdump: present
-          centos_6:
-            iptables: present
-            curl: present
-          centos_7:
-            httpd: present
-            zip: present
-            tcpdump: absent
-          amazon_1:
-            telnet: present
-          amazon_2:
-            zsh: present
-          ubuntu_18.04:
-            apt-file: present
-        packages_os_group:
-          centos_7:
-            traceroute: present
-        packages_os_host:
-          vim: present
       roles:
          - role: gabops.packages_os
 ```
