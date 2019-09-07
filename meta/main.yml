@@ -30,7 +30,6 @@ galaxy_info:
     - packaging
     - yum
     - apt
-    - zypper
     - centos
     - ubuntu
     - debian
