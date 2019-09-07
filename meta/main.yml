@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-  role_name: gabops.packages_os
+  role_name: packages_os
   author: Gabriel Suarez
   description: Installs system packages on multiple GNU/Linux distributions
   license: MIT
