@@ -55,11 +55,18 @@ Example Playbook
         packages_os_host:
           vim: present
       roles:
-         - role: gabops.packages
+         - role: gabops.packages_os
 ```
 
-The structure of the dictionary `packages_os_common` and `packages_os_group` is the same. You can have an `all` group which will apply packages to all the hosts the playbook runs over and you can have defined packages specifically for the distribution of the hosts you are provisioning using the format `DISTRO_VERSION`. The `all` or `DISTRO_VERSION` groups can be defined in lower case or upper case or whatever you prefer, so `ALL` will work the same as `all` and also `DeBiAn_10` (:astonished:) will work in the same way as `Debian_10`.
+- The the dictionaries `packages_os_common` and `packages_os_group` supports the same format.
 
+- The group `all` defines packages for all the hosts no matter the distro. Bare in mind that the name of the packages must be the same across the hostss (distros) you are provisioning. 
+
+- Apart from `all` you can define packages for an specific distro by using the format `distro + underscore + version` as the above example shows.
+
+- The `all` or `distro_version` keys can be defined in lower, upper or mixed. So `ALL` will work the same as `all` and also `DeBiAn_10` (:neutral_face:) will work in the same way as `Debian_10`.
+
+- The dictionary `packages_os_host` does not support anything other than just a list of packages. This variable is used for applying packages to an specific host, so, does not make sense to group packages per distro/all.
 
 License
 -------
