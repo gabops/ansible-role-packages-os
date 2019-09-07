@@ -2,3 +2,7 @@
 packages_common: {}
 packages_group: {}
 packages_host: {}
+packages_yum_enablerepo: ""
+packages_yum_disablerepo: ""
+packages_apt_default_release: ""
+packages_apt_update_cache: true
