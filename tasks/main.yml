@@ -1,2 +1,4 @@
 ---
+- import_tasks: variables.yml
+
 - import_tasks: install.yml
