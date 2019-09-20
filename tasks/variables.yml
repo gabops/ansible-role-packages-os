@@ -1,7 +1,7 @@
 ---
 - name: Set distribution version for Amazon linux 1
   set_fact:
-    packages_os_distro: "{{ ansible_distribution | lower + '_' + 1 }}"
+    packages_os_distro: "{{ ansible_distribution | lower + '_' + '1' }}"
   when: ansible_distribution == "Amazon" and ansible_distribution_version == "NA"
 
 - name: Set distribution version for Ubuntu
