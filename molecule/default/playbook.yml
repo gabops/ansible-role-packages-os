@@ -4,14 +4,26 @@
   vars:
     packages_os_common:
       all:
-        tcpdump: present
+        vim: present
+        wget: present
+        file: present
+        man: present
       centos_6:
         iptables: present
         curl: present
       centos_7:
-        httpd: present
-        zip: present
-        tcpdump: absent
+        dos2unix: present
+        mailx: present
+        mlocate: present
+        patch: present
+        perl: present
+        strace: present
+        tcpdump: present
+        tmux: present
+        unzip: present
+        screen: present
+        sysstat: present
+        iotop: present
       amazon_1:
         telnet: present
       amazon_2:
@@ -19,9 +31,12 @@
       ubuntu_18.04:
         apt-file: present
     packages_os_group:
+      all:
+        rsyslog: present
       centos_7:
         traceroute: present
     packages_os_host:
-      vim: present
+      lsof: present
+      vim: absent
   roles:
     - role: "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') | basename }}"
