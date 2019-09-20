@@ -1,0 +1,23 @@
+---
+- name: Set distribution version for Amazon linux 1
+  set_fact:
+    packages_os_distro: "{{ ansible_distribution | lower + '_' + 1 }}"
+  when: ansible_distribution == "Amazon" and ansible_distribution_version == "NA"
+
+- name: Set distribution version for Ubuntu
+  set_fact:
+    packages_os_distro: "{{ ansible_distribution | lower + '_' + ansible_distribution_version }}"
+  when: ansible_distribution == "Ubuntu"
+
+- name: Set distribution
+  set_fact:
+    packages_os_distro: "{{ ansible_distribution | lower + '_' + ansible_distribution_major_version }}"
+
+- name: Merge package groups
+  set_fact:
+    packages_os_merged: >
+      {{ packages_os_common['all'] | default({}) |
+         combine(packages_os_common[packages_os_distro] | default({}), recursive=True) |
+         combine(packages_os_group['all'] | default({}), recursive=True) |
+         combine(packages_os_group[packages_os_distro] | default({}), recursive=True) |
+         combine(packages_os_host, recursive=True) }}
