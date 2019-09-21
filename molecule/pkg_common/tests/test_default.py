@@ -7,6 +7,6 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 
 def test_pkg_installed(host):
-    pkg_perl = host.package("perl")
+    pkg_wget = host.package("wget")
 
-    assert pkg_perl.is_installed
+    assert pkg_wget.is_installed

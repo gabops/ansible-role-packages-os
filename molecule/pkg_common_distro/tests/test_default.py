@@ -9,7 +9,6 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 def test_pkg_installed(host):
     os = host.system_info.distribution
     release = host.system_info.release
-    print(host.system_info)
 
     if os == "amzn" and release == "2":
         pkg = host.package("vim-enhanced")
