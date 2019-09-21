@@ -65,17 +65,38 @@ packages_os_host:
 ```yaml
     - hosts: all
       vars:
+        packages_os_common:
+          all:
+            tcpdump: present
+          centos_6:
+            iptables: present
+            curl: present
+          centos_7:
+            httpd: present
+            zip: present
+            tcpdump: absent
+          amazon_1:
+            telnet: present
+          amazon_2:
+            zsh: present
+          ubuntu_18.04:
+            apt-file: present
+        packages_os_group:
+          centos_7:
+            traceroute: present
+        packages_os_host:
+          vim: present
       roles:
          - role: gabops.packages_os
 ```
 
 - The the dictionaries `packages_os_common` and `packages_os_group` supports the same format.
 
-- The group `all` defines packages for all the hosts no matter the distro. Bare in mind that the name of the packages must be the same across the hostss (distros) you are provisioning. 
+- The group `all` defines packages for all the hosts no matter the distro. Bare in mind that the name of the packages must be the same across the hosts (distros) you are provisioning. 
 
-- Apart from `all` you can define packages for an specific distro by using the format `distro + underscore + version` as the above example shows.
+- Apart from `all` you can define packages for an specific distro by using the format `distro + _ + version` as the above example shows.
 
-- The `all` or `distro_version` keys can be defined in lower, upper or mixed. So `ALL` will work the same as `all` and also `DeBiAn_10` (:neutral_face:) will work in the same way as `Debian_10`.
+- The `all` or `distro_version` keys inside `packages_os_common` and `packages_os_group` must be declared in **lower case**.
 
 - The dictionary `packages_os_host` does not support anything other than just a list of packages. This variable is used for applying packages to an specific host, so, does not make sense to group packages per distro/all.
 

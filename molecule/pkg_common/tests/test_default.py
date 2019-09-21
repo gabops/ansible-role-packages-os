@@ -8,7 +8,5 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 def test_pkg_installed(host):
     pkg_wget = host.package("wget")
-    pkg_rsyslog = host.package("rsyslog")
 
-    assert pkg_rsyslog.is_installed
     assert pkg_wget.is_installed

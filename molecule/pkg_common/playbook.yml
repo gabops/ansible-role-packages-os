@@ -30,13 +30,5 @@
         zsh: present
       ubuntu_18.04:
         apt-file: present
-    packages_os_group:
-      all:
-        rsyslog: present
-      centos_7:
-        traceroute: present
-    packages_os_host:
-      lsof: present
-      vim: absent
   roles:
     - role: "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') | basename }}"

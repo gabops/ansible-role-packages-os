@@ -7,8 +7,6 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 
 def test_pkg_installed(host):
-    pkg_wget = host.package("wget")
-    pkg_rsyslog = host.package("rsyslog")
+    pkg_lsof = host.package("lsof")
 
-    assert pkg_rsyslog.is_installed
-    assert pkg_wget.is_installed
+    assert pkg_lsof.is_installed
