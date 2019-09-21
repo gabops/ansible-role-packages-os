@@ -1,0 +1,34 @@
+---
+- name: Converge
+  hosts: all
+  vars:
+    packages_os_common:
+      all:
+        vim: present
+        wget: present
+        file: present
+        man: present
+      centos_6:
+        iptables: present
+        curl: present
+      centos_7:
+        dos2unix: present
+        mailx: present
+        mlocate: present
+        patch: present
+        perl: present
+        strace: present
+        tcpdump: present
+        tmux: present
+        unzip: present
+        screen: present
+        sysstat: present
+        iotop: present
+      amazon_1:
+        telnet: present
+      amazon_2:
+        zsh: present
+      ubuntu_18.04:
+        apt-file: present
+  roles:
+    - role: "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') | basename }}"
