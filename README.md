@@ -65,7 +65,6 @@ packages_os_host:
 ```yaml
     - hosts: all
       vars:
-<<<<<<< HEAD
         packages_os_common:
           all:
             tcpdump: present
@@ -87,17 +86,15 @@ packages_os_host:
             traceroute: present
         packages_os_host:
           vim: present
-=======
->>>>>>> master
       roles:
          - role: gabops.packages_os
 ```
 
 - The the dictionaries `packages_os_common` and `packages_os_group` supports the same format.
 
-- The group `all` defines packages for all the hosts no matter the distro. Bare in mind that the name of the packages must be the same across the hostss (distros) you are provisioning. 
+- The group `all` defines packages for all the hosts no matter the distro. Bare in mind that the name of the packages must be the same across the hosts (distros) you are provisioning. 
 
-- Apart from `all` you can define packages for an specific distro by using the format `distro + underscore + version` as the above example shows.
+- Apart from `all` you can define packages for an specific distro by using the format `distro + _ + version` as the above example shows.
 
 - The `all` or `distro_version` keys inside `packages_os_common` and `packages_os_group` must be declared in **lower case**.
 
