@@ -21,3 +21,21 @@
          combine(packages_os_group['all'] | default({}), recursive=True) |
          combine(packages_os_group[packages_os_distro | lower] | default({}), recursive=True) |
          combine(packages_os_host, recursive=True) }}
+
+- name: Set list with packages declared as 'present'
+  set_fact:
+    packages_os_present_pkgs: "{{ packages_os_present_pkgs + [item.key] }}"
+  when: item.value == "present"
+  loop: "{{ packages_os_merged | dict2items }}"
+
+- name: Set list with packages declared as 'absent'
+  set_fact:
+    packages_os_absent_pkgs: "{{ packages_os_absent_pkgs + [item.key] }}"
+  when: item.value == "absent"
+  loop: "{{ packages_os_merged | dict2items }}"
+
+- name: Set final packages list
+  set_fact:
+    packages_os_pkgs:
+      present: "{{ packages_os_present_pkgs }}"
+      absent: "{{ packages_os_absent_pkgs }}"

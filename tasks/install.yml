@@ -1,18 +1,18 @@
 ---
 - name: Install / Uninstall packages (RedHat)
   yum:
-    name: "{{ item.key }}"
-    state: "{{ item.value }}"
+    name: "{{ item.value }}"
+    state: "{{ item.key }}"
     enablerepo: "{{ packages_os_yum_enablerepo }}"
     disablerepo: "{{ packages_os_yum_disablerepo }}"
-  loop: "{{ packages_os_merged | dict2items }}"
+  loop: "{{ packages_os_pkgs | dict2items }}"
   when: ansible_os_family == "RedHat"
 
 - name: Install / Uninstall packages (Debian)
   apt:
-    name: "{{ item.key }}"
-    state: "{{ item.value }}"
+    name: "{{ item.value }}"
+    state: "{{ item.key }}"
     update_cache: "{{ packages_os_apt_update_cache }}"
     default_release: "{{ packages_os_apt_default_release }}"
-  loop: "{{ packages_os_merged | dict2items }}"
+  loop: "{{ packages_os_pkgs | dict2items }}"
   when: ansible_os_family == "Debian"
