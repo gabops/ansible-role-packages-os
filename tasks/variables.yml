@@ -1,4 +1,8 @@
 ---
+- name: Set distribution
+  set_fact:
+    packages_os_distro: "{{ ansible_distribution + '_' + ansible_distribution_major_version }}"
+
 - name: Set distribution version for Amazon linux 1
   set_fact:
     packages_os_distro: "{{ ansible_distribution + '_' + '1' }}"
@@ -8,10 +12,6 @@
   set_fact:
     packages_os_distro: "{{ ansible_distribution + '_' + ansible_distribution_version }}"
   when: ansible_distribution == "Ubuntu"
-
-- name: Set distribution
-  set_fact:
-    packages_os_distro: "{{ ansible_distribution + '_' + ansible_distribution_major_version }}"
 
 - name: Merge package groups
   set_fact:
