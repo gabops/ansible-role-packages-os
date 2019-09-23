@@ -16,6 +16,7 @@ galaxy_info:
         - 2017.03
         - 2017.09
         - 2017.12
+        - Candidate
     - name: Debian
       versions:
         - jessie
