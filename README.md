@@ -65,7 +65,7 @@ packages_os_host:
 ```yaml
     - hosts: all
       roles:
-         - role: gabops.packages_os
+        - role: gabops.packages_os
 ```
 
 - The the dictionaries `packages_os_common` and `packages_os_group` supports the same format.
