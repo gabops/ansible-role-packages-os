@@ -1,5 +1,5 @@
 gabops.packages_os
-=========
+==================
 [![Build Status](https://travis-ci.org/gabops/ansible-role-packages-os.svg?branch=master)](https://travis-ci.org/gabops/ansible-role-packages-os)
 
 Installs system packages on multiple GNU/Linux distributions
@@ -64,30 +64,8 @@ packages_os_host:
 - playbook:
 ```yaml
     - hosts: all
-      vars:
-        packages_os_common:
-          all:
-            tcpdump: present
-          centos_6:
-            iptables: present
-            curl: present
-          centos_7:
-            httpd: present
-            zip: present
-            tcpdump: absent
-          amazon_1:
-            telnet: present
-          amazon_2:
-            zsh: present
-          ubuntu_18.04:
-            apt-file: present
-        packages_os_group:
-          centos_7:
-            traceroute: present
-        packages_os_host:
-          vim: present
       roles:
-         - role: gabops.packages_os
+        - role: gabops.packages_os
 ```
 
 - The the dictionaries `packages_os_common` and `packages_os_group` supports the same format.
