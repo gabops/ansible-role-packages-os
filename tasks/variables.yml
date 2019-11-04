@@ -1,7 +1,7 @@
 ---
 - name: Set distribution
   set_fact:
-    packages_os_distro: "{{ ansible_distribution + '_' + ansible_distribution_major_version }}"
+    packages_os_distro: "{{ ansible_distribution + '_' + ansible_distribution_major_version | string }}"
 
 - name: Set distribution version for Amazon linux 1
   set_fact:
