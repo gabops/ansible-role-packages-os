@@ -14,6 +14,7 @@ Role Variables
 
 | Variable | Default value | Description |
 | :--- | :--- | :--- |
+| packages_os | {} | Defines a list of packages grouped by `disto_majorversion`. This can be used in conjuction with any or the other variables below or alone from a playbook. See `Example Playbook` below. |
 | packages_os_common | {} | Defines packages for all hosts grouped in "all" or distribution_version (see playbook example). Usually you would put this in the `all` default metagroup inside of group_vars |
 | packages_os_group | {} | Defines packages for all hosts grouped in "all" or distribution_version (see playbook example). Usually you would put this in any more specific group or metagroup of hosts other than `all` inside of group_vars |
 | packages_os_host | {} | Defines packages for an `specific host`. Usually you put this in a host_vars file |

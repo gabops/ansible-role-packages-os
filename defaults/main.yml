@@ -1,4 +1,5 @@
 ---
+packages_os: {}
 packages_os_common: {}
 packages_os_group: {}
 packages_os_host: {}

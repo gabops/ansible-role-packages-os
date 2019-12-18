@@ -16,8 +16,11 @@
 - name: Merge package groups
   set_fact:
     packages_os_merged: >
-      {{ packages_os_common['all'] | default({}) |
-         combine(packages_os_common[packages_os_distro | lower] | default({}), recursive=True) |
-         combine(packages_os_group['all'] | default({}), recursive=True) |
-         combine(packages_os_group[packages_os_distro | lower] | default({}), recursive=True) |
-         combine(packages_os_host, recursive=True) }}
+      {{
+        packages_os |
+        combine(packages_os_common['all'] | default({})) |
+        combine(packages_os_common[packages_os_distro | lower] | default({}), recursive=True) |
+        combine(packages_os_group['all'] | default({}), recursive=True) |
+        combine(packages_os_group[packages_os_distro | lower] | default({}), recursive=True) |
+        combine(packages_os_host, recursive=True)
+      }}
