@@ -2,11 +2,13 @@
 - name: Converge
   hosts: all
   vars:
+    packages_os:
+      all:
+        file: present
     packages_os_common:
       all:
         vim: present
         wget: present
-        file: present
         man: present
       centos_6:
         iptables: present
