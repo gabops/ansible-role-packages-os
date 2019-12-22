@@ -74,12 +74,12 @@ packages_os_host:
 ```
 
 - The hierarchy of the variables, from lighter to heavier is:
-  1. packages_os_common
-  2. packages_os_group
-  3. packages_os_host
-  4. packages_os
+  - packages_os_common
+  - packages_os_group
+  - packages_os_host
+  - packages_os
 
-  This means that a package defined in package_os will overwrite any other definition in any other of the other variables. As the idea of
+  This means that a package defined in package_os will overwrite any definition in any of the other variables. As the idea of
   package_os is to be defined normally in a playbook, makes sense to give more priority to it.
 
 - The the dictionaries `packages_os`, `packages_os_common` and `packages_os_group` use the same format.
