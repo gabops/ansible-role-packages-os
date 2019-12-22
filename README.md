@@ -65,9 +65,22 @@ packages_os_host:
 - playbook:
 ```yaml
     - hosts: all
+      vars:
+        packages_os:
+          centos_7:
+            python-devel: present
       roles:
         - role: gabops.packages_os
 ```
+
+- The hierarchy of the variables, from lighter to heavier is:
+  1. packages_os_common
+  2. packages_os_group
+  3. packages_os_host
+  4. packages_os
+
+  This means that a package defined in package_os will overwrite any other definition in any other of the other variables. As the idea of
+  package_os is to be defined normally in a playbook, makes sense to give more priority to it.
 
 - The the dictionaries `packages_os`, `packages_os_common` and `packages_os_group` use the same format.
 

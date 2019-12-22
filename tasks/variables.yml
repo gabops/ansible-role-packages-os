@@ -17,11 +17,11 @@
   set_fact:
     packages_os_merged: >
       {{
-        packages_os['all'] | default({}) |
-        combine(packages_os[packages_os_distro | lower] | default({}), recursive=True) |
-        combine(packages_os_common['all'] | default({})) |
+        packages_os_common['all'] | default({}) |
         combine(packages_os_common[packages_os_distro | lower] | default({}), recursive=True) |
         combine(packages_os_group['all'] | default({}), recursive=True) |
         combine(packages_os_group[packages_os_distro | lower] | default({}), recursive=True) |
-        combine(packages_os_host, recursive=True)
+        combine(packages_os_host, recursive=True) |
+        combine(packages_os['all'] | default({})) |
+        combine(packages_os[packages_os_distro | lower] | default({}), recursive=True)
       }}
