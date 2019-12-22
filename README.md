@@ -14,10 +14,10 @@ Role Variables
 
 | Variable | Default value | Description |
 | :--- | :--- | :--- |
-| packages_os | {} | Defines packages grouped in the format `disto_version`. This variable can be used alone or in conjuction with any of the variables `package_os_common`,`packages_os_group` or `packages_host`. See `Example Playbook` below. |
-| packages_os_common | {} | Defines packages for all hosts grouped in "all" or distribution_version (see playbook example). Usually you would put this in the `all` default metagroup inside of group_vars |
-| packages_os_group | {} | Defines packages for all hosts grouped in "all" or distribution_version (see playbook example). Usually you would put this in any more specific group or metagroup of hosts other than `all` inside of group_vars |
-| packages_os_host | {} | Defines packages for an `specific host`. Usually you put this in a host_vars file |
+| packages_os | {} | Defines packages to be installed/uninstalled. This variable can be used alone or in conjuction with any of the variables `package_os_common`,`packages_os_group` or `packages_host`. See `Example Playbook` below. |
+| packages_os_common | {} | Defines packages to be installed/uninstalled. Tipically you will define this variable in the default metagroup `all` (group_vars/all/) |
+| packages_os_group | {} | Defines packages to be installed/uninstalled. Tipically you will define this variable in any of the groups your inventory has like for example `webservers` (group_vars/webservers/). The group obviously depends of the configuration of your inventory. |
+| packages_os_host | {} | Defines packages for an `specific host`. Tipically you will define this in a host_vars file(host_vars/host-01/). |
 | packages_os_yum_enablerepo | "" | Performs a `--enablerepo` operation when installing packages from `yum` |
 | packages_os_yum_disablerepo | "" | Performs a `--disablerepo` operation when installing packages from `yum` |
 | packages_os_apt_default_release | "" | Performs a `--target-release` operation when installing packages from `apt` |
@@ -72,6 +72,9 @@ packages_os_host:
       roles:
         - role: gabops.packages_os
 ```
+- As you can see, the grouping of packages in the `packages_os`, `packages_os_common` and `packages_os_group` variables follows the format `DISTO_VERSION` or just `all` for matching all distributions. Bare in mind that if you define a package in `all` and you are targeting different Linux distro families, the role probably will fail as the package names can change between different distros.
+
+- The dictionary `packages_os_host` is the only one that does not follow the format `DISTO_VERSION`. As the intention of this variable is to apply packages to an specific host, does not make sense to group by distros nor all. 
 
 - The hierarchy of the variables, from lighter to heavier is:
   - packages_os_common
@@ -81,12 +84,6 @@ packages_os_host:
 
   This means that a package defined in package_os will overwrite any definition in any of the other variables. As the idea of
   package_os is to be defined normally in a playbook, makes sense to give more priority to it.
-
-- The the dictionaries `packages_os`, `packages_os_common` and `packages_os_group` use the same format.
-
-- The group `all` defines packages for all the hosts no matter the distro. Bare in mind that the name of the packages must be the same across the hosts (distros) you are provisioning and for that reason you have the per distro grouping.
-
-- The dictionary `packages_os_host` does not support anything other than just a list of packages. This variable is used for applying packages to an specific host, so, does not make sense to group packages per distro/all.
 
 License
 -------
