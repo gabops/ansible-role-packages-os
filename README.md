@@ -14,7 +14,7 @@ Role Variables
 
 | Variable | Default value | Description |
 | :--- | :--- | :--- |
-| packages_os | {} | Defines a list of packages grouped by `disto_majorversion`. This can be used in conjuction with any or the other variables below or alone from a playbook. See `Example Playbook` below. |
+| packages_os | {} | Defines packages grouped in the format `disto_version`. This variable can be used alone or in conjuction with any of the variables `package_os_common`,`packages_os_group` or `packages_host`. See `Example Playbook` below. |
 | packages_os_common | {} | Defines packages for all hosts grouped in "all" or distribution_version (see playbook example). Usually you would put this in the `all` default metagroup inside of group_vars |
 | packages_os_group | {} | Defines packages for all hosts grouped in "all" or distribution_version (see playbook example). Usually you would put this in any more specific group or metagroup of hosts other than `all` inside of group_vars |
 | packages_os_host | {} | Defines packages for an `specific host`. Usually you put this in a host_vars file |
@@ -69,13 +69,9 @@ packages_os_host:
         - role: gabops.packages_os
 ```
 
-- The the dictionaries `packages_os_common` and `packages_os_group` supports the same format.
+- The the dictionaries `packages_os`, `packages_os_common` and `packages_os_group` use the same format.
 
-- The group `all` defines packages for all the hosts no matter the distro. Bare in mind that the name of the packages must be the same across the hosts (distros) you are provisioning. 
-
-- Apart from `all` you can define packages for an specific distro by using the format `distro + _ + version` as the above example shows.
-
-- The `all` or `distro_version` keys inside `packages_os_common` and `packages_os_group` must be declared in **lower case**.
+- The group `all` defines packages for all the hosts no matter the distro. Bare in mind that the name of the packages must be the same across the hosts (distros) you are provisioning and for that reason you have the per distro grouping.
 
 - The dictionary `packages_os_host` does not support anything other than just a list of packages. This variable is used for applying packages to an specific host, so, does not make sense to group packages per distro/all.
 
