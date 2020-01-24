@@ -6,11 +6,6 @@ env:
   matrix:
     - TEST_DISTRO: centos:6
     - TEST_DISTRO: centos:7
-    - TEST_DISTRO: amazonlinux:2016.09
-    - TEST_DISTRO: amazonlinux:2017.03
-    - TEST_DISTRO: amazonlinux:2017.09
-    - TEST_DISTRO: amazonlinux:2017.12
-    - TEST_DISTRO: amazonlinux:2018.03
     - TEST_DISTRO: amazonlinux:1
     - TEST_DISTRO: amazonlinux:2
     - TEST_DISTRO: debian:8
