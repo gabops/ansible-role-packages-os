@@ -13,17 +13,10 @@
         curl: present
       centos_7:
         dos2unix: present
-        mailx: present
-        mlocate: present
-        patch: present
         perl: present
         strace: present
         tcpdump: present
         tmux: present
-        unzip: present
-        screen: present
-        sysstat: present
-        iotop: present
       amazon_1:
         telnet: present
       amazon_2:
