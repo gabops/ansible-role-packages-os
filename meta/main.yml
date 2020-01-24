@@ -12,11 +12,10 @@ galaxy_info:
         - 7
     - name: Amazon
       versions:
-        - 2016.09
-        - 2017.03
-        - 2017.09
-        - 2017.12
-        - Candidate
+        - all
+    - name: Amazon Linux 2
+      versions:
+        - any
     - name: Debian
       versions:
         - jessie
