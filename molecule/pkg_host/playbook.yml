@@ -1,9 +1,0 @@
----
-- name: Converge
-  hosts: all
-  vars:
-    packages_os_host:
-      lsof: present
-      vim: absent
-  roles:
-    - role: "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') | basename }}"
