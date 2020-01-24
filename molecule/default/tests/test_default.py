@@ -7,5 +7,5 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 
 def test_pkg_installed(host):
-    
+
     pass
